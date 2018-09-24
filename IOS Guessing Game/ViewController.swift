@@ -42,10 +42,12 @@ class ViewController: UIViewController {
             gameOver = false
         }
     }
+    override func viewWillAppear(_ animated: Bool) {
+        correctBox.isHidden = true
+    }
     
     override func viewDidLoad() {
         cheaterLabel.text = String(randomNumber)
-        correctBox.isHidden = true
     }
     
     
