@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     var actualNumber = -1
     var gameOver = false
-    var randomNumber = Int(arc4random_uniform(99)) + 1
+    var randomNumber = Int(arc4random_uniform(100))
     var attemptsValue: Int = 0 {
         didSet {
             attemptLabel.text = String(attemptsValue)
@@ -23,13 +23,33 @@ class ViewController: UIViewController {
     // This value will be selected from the picker later on.
     
  
+    @IBOutlet weak var highestNumberSlider: UISlider!
+    @IBOutlet weak var highestNumberLabel: UILabel!
     @IBOutlet weak var cheaterLabel: UILabel!
     @IBOutlet weak var attemptLabel: UILabel!
     @IBOutlet weak var ourButton: UIButton!
     @IBOutlet weak var ourTextBox: UITextField!
     @IBOutlet weak var ourLabel: UILabel!
     var userInput: String?
-
+    
+    
+    
+    
+    
+    
+    
+    @IBAction func ringVolumeSliderChange(_ sender: UISlider)
+    {
+        sender.setValue(sender.value.rounded(.down), animated: true)
+    }
+    
+    @IBAction func maxValueChanged(_ sender: Any) {
+        let sliderInt = Int(highestNumberSlider.value)
+        highestNumberLabel.text = String(sliderInt)
+        randomNumber = Int(arc4random_uniform(UInt32(sliderInt)))
+        cheaterLabel.text = String(randomNumber)
+    }
+    
     
     @IBAction func Tapped(_ sender: Any) {
         if !gameOver {
@@ -51,9 +71,13 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
         cheaterLabel.text = String(randomNumber)
     }
-    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
     
     func checkUserInput (input: String?)
     {
@@ -63,11 +87,11 @@ class ViewController: UIViewController {
             {
                 ourLabel.text = "Good job!\nYou got it!\nReseting the number!"
                 let oldNumber = randomNumber
-                randomNumber = Int(arc4random_uniform(99)) + 1
+                randomNumber = Int(arc4random_uniform(100))
                 userSettings.wins += 1
                 DataManagement.saveData(userSettings: userSettings)
                 if oldNumber == randomNumber {
-                    randomNumber = Int(arc4random_uniform(99)) + 1
+                    randomNumber = Int(arc4random_uniform(100))
                     
                 }
                 cheaterLabel.text = String(randomNumber)
