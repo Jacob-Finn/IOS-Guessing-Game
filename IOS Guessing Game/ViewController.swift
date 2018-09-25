@@ -17,6 +17,7 @@ class ViewController: UIViewController {
             attemptLabel.text = String(attemptsValue)
         }
     }
+    var maxRange = 101
     var userSettings = UserSettings(wins: 0, loses: 0)
     var finalScore = 0
     let colorDictionary = [0: UIColor.white, 1: UIColor.red, 2: UIColor.blue, 3:UIColor.green, 4: UIColor.cyan]
@@ -46,8 +47,10 @@ class ViewController: UIViewController {
     @IBAction func maxValueChanged(_ sender: Any) {
         let sliderInt = Int(highestNumberSlider.value)
         highestNumberLabel.text = String(sliderInt)
-        randomNumber = Int(arc4random_uniform(UInt32(sliderInt)))
+        randomNumber = Int(arc4random_uniform(UInt32(sliderInt + 1)))
+        maxRange = sliderInt + 1
         cheaterLabel.text = String(randomNumber)
+        attemptsValue = 0
     }
     
     
@@ -87,11 +90,11 @@ class ViewController: UIViewController {
             {
                 ourLabel.text = "Good job!\nYou got it!\nReseting the number!"
                 let oldNumber = randomNumber
-                randomNumber = Int(arc4random_uniform(100))
+                randomNumber = Int(arc4random_uniform(UInt32(maxRange)))
                 userSettings.wins += 1
                 DataManagement.saveData(userSettings: userSettings)
                 if oldNumber == randomNumber {
-                    randomNumber = Int(arc4random_uniform(100))
+                    randomNumber = Int(arc4random_uniform(UInt32(maxRange)))
                     
                 }
                 cheaterLabel.text = String(randomNumber)
