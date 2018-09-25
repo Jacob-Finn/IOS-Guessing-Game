@@ -12,41 +12,45 @@ class ViewController: UIViewController {
     var actualNumber = -1
     var gameOver = false
     var randomNumber = Int(arc4random_uniform(99)) + 1
-    var attempts = 0
+    var attemptsValue: Int = 0 {
+        didSet {
+            attemptLabel.text = String(attemptsValue)
+        }
+    }
+    var userSettings = UserSettings(wins: 0, loses: 0)
     var finalScore = 0
-    var timer: Timer? = nil
-    var colorTimer: Timer? = nil
-    let randomColors = [UIColor.red, UIColor.blue, UIColor.black,
-                        UIColor.orange, UIColor.green, UIColor.cyan,
-                        UIColor.brown, UIColor.purple, UIColor.magenta,
-                        UIColor.darkGray, UIColor.yellow]
+    let colorDictionary = [0: UIColor.white, 1: UIColor.red, 2: UIColor.blue, 3:UIColor.green, 4: UIColor.cyan]
+    // This value will be selected from the picker later on.
     
-    @IBOutlet weak var correctBox: UIView!
+ 
     @IBOutlet weak var cheaterLabel: UILabel!
     @IBOutlet weak var attemptLabel: UILabel!
     @IBOutlet weak var ourButton: UIButton!
     @IBOutlet weak var ourTextBox: UITextField!
     @IBOutlet weak var ourLabel: UILabel!
     var userInput: String?
-    
-    
+
     
     @IBAction func Tapped(_ sender: Any) {
         if !gameOver {
         userInput = ourTextBox.text
         checkUserInput(input: userInput)
         }else {     // game is over at this point
-            attempts = 0
-            attemptLabel.text = String(attempts)
-            ourButton.setTitle("Finalize your decision", for: UIControlState.normal)
+            attemptsValue = 0
+            ourButton.setTitle("Finalize your decision", for: UIControl.State.normal)
             gameOver = false
         }
     }
     override func viewWillAppear(_ animated: Bool) {
-        correctBox.isHidden = true
+        super.viewWillAppear(animated)
+        if DataManagement.saveExists() { // The data manager checks if data exists and if it does, we try to load it
+            userSettings = DataManagement.loadData()!
+        }
+        view.backgroundColor = colorDictionary[userSettings.colorChoice]
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         cheaterLabel.text = String(randomNumber)
     }
     
@@ -60,27 +64,24 @@ class ViewController: UIViewController {
                 ourLabel.text = "Good job!\nYou got it!\nReseting the number!"
                 let oldNumber = randomNumber
                 randomNumber = Int(arc4random_uniform(99)) + 1
+                userSettings.wins += 1
+                DataManagement.saveData(userSettings: userSettings)
                 if oldNumber == randomNumber {
                     randomNumber = Int(arc4random_uniform(99)) + 1
                     
                 }
-                visuallyRewardUser()
                 cheaterLabel.text = String(randomNumber)
-                attempts = 0
-                attemptLabel.text = String(attempts)
+                attemptsValue = 0
             }else if userInput < randomNumber
             {
                 ourLabel.text = "Too low!"
-                attempts += 1
-                print(attempts)
-                attemptLabel.text = String(attempts)
+                attemptsValue += 1
                 checkAttempts()
                 
             }else if userInput > randomNumber
             {
                 ourLabel.text = "Too high!"
-                attempts += 1
-                attemptLabel.text = String(attempts)
+                attemptsValue += 1
                 checkAttempts()
             }
         }
@@ -90,14 +91,20 @@ class ViewController: UIViewController {
         }
     }
     func checkAttempts () {
-        if attempts == 7 {
+        if attemptsValue == 7 {
             gameOver = true
-            ourButton.setTitle("Retry?", for: UIControlState.normal)
+            ourButton.setTitle("Retry?", for: UIControl.State.normal)
             ourLabel.text = "You lost!"
+            userSettings.loses += 1
+            DataManagement.saveData(userSettings: userSettings)
         }
     }
     
+  
     
+    
+    
+    /*
     func visuallyRewardUser() {
         correctBox.isHidden = false
         timer = Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(hideRewardBox), userInfo: nil, repeats: false)
@@ -105,7 +112,6 @@ class ViewController: UIViewController {
     }
     
     @objc func randomizeColor() {
-        print("changing colxor")
         let randomSelector = Int(arc4random_uniform(UInt32(randomColors.count)))
         correctBox.backgroundColor = randomColors[randomSelector]
         if correctBox.isHidden == true {
@@ -120,7 +126,7 @@ class ViewController: UIViewController {
         correctBox.isHidden = true
     }
     
-    
+*/
 }
 
 

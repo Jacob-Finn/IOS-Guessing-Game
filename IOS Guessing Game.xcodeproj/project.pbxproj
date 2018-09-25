@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B915311215A8B7C00FB968C /* UIUserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B915310215A8B7C00FB968C /* UIUserSettings.swift */; };
+		7BC8ED6B215A6FCE00AA4BDD /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC8ED6A215A6FCE00AA4BDD /* UserSettings.swift */; };
+		7BC8ED6D215A728600AA4BDD /* DataManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC8ED6C215A728600AA4BDD /* DataManagement.swift */; };
 		7BF76877212A55B60042664E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF76876212A55B60042664E /* AppDelegate.swift */; };
 		7BF76879212A55B60042664E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF76878212A55B60042664E /* ViewController.swift */; };
 		7BF7687C212A55B60042664E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BF7687A212A55B60042664E /* Main.storyboard */; };
 		7BF7687E212A55B70042664E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BF7687D212A55B70042664E /* Assets.xcassets */; };
 		7BF76881212A55B70042664E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BF7687F212A55B70042664E /* LaunchScreen.storyboard */; };
-		7BF7688C212A55B70042664E /* IOS_Guessing_GameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF7688B212A55B70042664E /* IOS_Guessing_GameTests.swift */; };
-		7BF76897212A55B70042664E /* IOS_Guessing_GameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF76896212A55B70042664E /* IOS_Guessing_GameUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +35,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7B915310215A8B7C00FB968C /* UIUserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIUserSettings.swift; sourceTree = "<group>"; };
+		7BC8ED6A215A6FCE00AA4BDD /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
+		7BC8ED6C215A728600AA4BDD /* DataManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagement.swift; sourceTree = "<group>"; };
 		7BF76873212A55B60042664E /* IOS Guessing Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IOS Guessing Game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BF76876212A55B60042664E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BF76878212A55B60042664E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; wrapsLines = 0; };
@@ -42,11 +46,7 @@
 		7BF76880212A55B70042664E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7BF76882212A55B70042664E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7BF76887212A55B70042664E /* IOS Guessing GameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "IOS Guessing GameTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7BF7688B212A55B70042664E /* IOS_Guessing_GameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOS_Guessing_GameTests.swift; sourceTree = "<group>"; };
-		7BF7688D212A55B70042664E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7BF76892212A55B70042664E /* IOS Guessing GameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "IOS Guessing GameUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7BF76896212A55B70042664E /* IOS_Guessing_GameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOS_Guessing_GameUITests.swift; sourceTree = "<group>"; };
-		7BF76898212A55B70042664E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,8 +78,6 @@
 			isa = PBXGroup;
 			children = (
 				7BF76875212A55B60042664E /* IOS Guessing Game */,
-				7BF7688A212A55B70042664E /* IOS Guessing GameTests */,
-				7BF76895212A55B70042664E /* IOS Guessing GameUITests */,
 				7BF76874212A55B60042664E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -97,32 +95,17 @@
 		7BF76875212A55B60042664E /* IOS Guessing Game */ = {
 			isa = PBXGroup;
 			children = (
-				7BF76876212A55B60042664E /* AppDelegate.swift */,
 				7BF76878212A55B60042664E /* ViewController.swift */,
+				7B915310215A8B7C00FB968C /* UIUserSettings.swift */,
+				7BC8ED6A215A6FCE00AA4BDD /* UserSettings.swift */,
+				7BF76876212A55B60042664E /* AppDelegate.swift */,
 				7BF7687A212A55B60042664E /* Main.storyboard */,
+				7BC8ED6C215A728600AA4BDD /* DataManagement.swift */,
 				7BF7687D212A55B70042664E /* Assets.xcassets */,
 				7BF7687F212A55B70042664E /* LaunchScreen.storyboard */,
 				7BF76882212A55B70042664E /* Info.plist */,
 			);
 			path = "IOS Guessing Game";
-			sourceTree = "<group>";
-		};
-		7BF7688A212A55B70042664E /* IOS Guessing GameTests */ = {
-			isa = PBXGroup;
-			children = (
-				7BF7688B212A55B70042664E /* IOS_Guessing_GameTests.swift */,
-				7BF7688D212A55B70042664E /* Info.plist */,
-			);
-			path = "IOS Guessing GameTests";
-			sourceTree = "<group>";
-		};
-		7BF76895212A55B70042664E /* IOS Guessing GameUITests */ = {
-			isa = PBXGroup;
-			children = (
-				7BF76896212A55B70042664E /* IOS_Guessing_GameUITests.swift */,
-				7BF76898212A55B70042664E /* Info.plist */,
-			);
-			path = "IOS Guessing GameUITests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,13 +176,16 @@
 				TargetAttributes = {
 					7BF76872212A55B60042664E = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 					};
 					7BF76886212A55B70042664E = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 						TestTargetID = 7BF76872212A55B60042664E;
 					};
 					7BF76891212A55B70042664E = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 						TestTargetID = 7BF76872212A55B60042664E;
 					};
 				};
@@ -257,6 +243,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7BF76879212A55B60042664E /* ViewController.swift in Sources */,
+				7B915311215A8B7C00FB968C /* UIUserSettings.swift in Sources */,
+				7BC8ED6B215A6FCE00AA4BDD /* UserSettings.swift in Sources */,
+				7BC8ED6D215A728600AA4BDD /* DataManagement.swift in Sources */,
 				7BF76877212A55B60042664E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -265,7 +254,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7BF7688C212A55B70042664E /* IOS_Guessing_GameTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,7 +261,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7BF76897212A55B70042664E /* IOS_Guessing_GameUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,7 +425,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.interaptskills.IOS-Guessing-Game";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -455,7 +442,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.interaptskills.IOS-Guessing-Game";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -474,7 +461,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.interaptskills.IOS-Guessing-GameTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IOS Guessing Game.app/IOS Guessing Game";
 			};
@@ -494,7 +481,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.interaptskills.IOS-Guessing-GameTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IOS Guessing Game.app/IOS Guessing Game";
 			};
@@ -513,7 +500,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.interaptskills.IOS-Guessing-GameUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = "IOS Guessing Game";
 			};
@@ -532,7 +519,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.interaptskills.IOS-Guessing-GameUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = "IOS Guessing Game";
 			};
