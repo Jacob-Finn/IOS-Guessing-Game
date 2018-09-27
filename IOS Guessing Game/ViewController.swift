@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     let colorDictionary = [0: UIColor.white, 1: UIColor.red, 2: UIColor.blue, 3:UIColor.green, 4: UIColor.cyan]
     // This value will be selected from the picker later on.
     
- 
+    
     @IBOutlet weak var highestNumberSlider: UISlider!
     @IBOutlet weak var highestNumberLabel: UILabel!
     @IBOutlet weak var cheaterLabel: UILabel!
@@ -56,8 +56,9 @@ class ViewController: UIViewController {
     
     @IBAction func Tapped(_ sender: Any) {
         if !gameOver {
-        userInput = ourTextBox.text
-        checkUserInput(input: userInput)
+            userInput = ourTextBox.text
+            ourTextBox.text = ""
+            checkUserInput(input: userInput)
         }else {     // game is over at this point
             attemptsValue = 0
             ourButton.setTitle("Finalize your decision", for: UIControl.State.normal)
@@ -74,7 +75,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         cheaterLabel.text = String(randomNumber)
     }
@@ -99,6 +100,8 @@ class ViewController: UIViewController {
                 }
                 cheaterLabel.text = String(randomNumber)
                 attemptsValue = 0
+            }else if userInput > 100 || userInput < 0 {
+                ourLabel.text = "Please enter a value 1-100"
             }else if userInput < randomNumber
             {
                 ourLabel.text = "Too low!"
@@ -127,33 +130,33 @@ class ViewController: UIViewController {
         }
     }
     
-  
+    
     
     
     
     /*
-    func visuallyRewardUser() {
-        correctBox.isHidden = false
-        timer = Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(hideRewardBox), userInfo: nil, repeats: false)
-        colorTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(randomizeColor), userInfo: nil, repeats: true)
-    }
-    
-    @objc func randomizeColor() {
-        let randomSelector = Int(arc4random_uniform(UInt32(randomColors.count)))
-        correctBox.backgroundColor = randomColors[randomSelector]
-        if correctBox.isHidden == true {
-            colorTimer?.invalidate()
-            
-        }
-    }
-    
-    
-    @objc func hideRewardBox() {
-        timer?.invalidate()
-        correctBox.isHidden = true
-    }
-    
-*/
+     func visuallyRewardUser() {
+     correctBox.isHidden = false
+     timer = Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(hideRewardBox), userInfo: nil, repeats: false)
+     colorTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(randomizeColor), userInfo: nil, repeats: true)
+     }
+     
+     @objc func randomizeColor() {
+     let randomSelector = Int(arc4random_uniform(UInt32(randomColors.count)))
+     correctBox.backgroundColor = randomColors[randomSelector]
+     if correctBox.isHidden == true {
+     colorTimer?.invalidate()
+     
+     }
+     }
+     
+     
+     @objc func hideRewardBox() {
+     timer?.invalidate()
+     correctBox.isHidden = true
+     }
+     
+     */
 }
 
 
